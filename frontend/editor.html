@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Editor Page</title>
+    <style>
+        .gutter {
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+
+        .gutter.gutter-horizontal {
+            cursor: col-resize;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+        }
+
+        .gutter.gutter-vertical {
+            cursor: row-resize;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+        }
+
+        #navbarToggle {
+            top: 0;
+            right: 0;
+            transform: translateX(100%);
+            transition: transform .5s;
+        }
+
+        #navbarToggle.open {
+            transform: translateX(0%);
+        }
+
+        .fixed-top-right {
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid vh-100">
+    <div class="row flex-nowrap flex-column h-100 bg-light">
+        <header class="col-auto border-bottom bg-white">
+            <nav class="navbar navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="">LMS</a>
+                    <button class="navbar-toggler" type="button"
+                            data-target="#navbarToggle">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <div class="col container-fluid my-3">
+            <div class="row flex-nowrap h-100 mx-2 no-gutters">
+                <div class="col d-flex flex-column border bg-white" id="document" style="transform: translateZ(0);">
+                    <div class="col d-flex position-relative overflow-auto pt-3">
+                        <div class="content">
+                            <header class="mb-3">
+                                <h1 class="mb-0">Hello World.</h1>
+                                <label class="d-flex align-items-center">
+                                    <small class="text-muted">Completed this exercise:</small>
+                                    <input type="checkbox" class="ml-1">
+                                </label>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+                                sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+                                vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                                Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
+                                elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
+                                eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis,
+                                feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+                                Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                                Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam
+                                semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
+                                luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec
+                                vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
+                                eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales
+                                sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, </p>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white position-fixed fixed-top-right mx-4 my-2">
+                            <button type="button"
+                                    class="btn btn-outline-secondary"
+                                    data-toggle="modal"
+                                    data-target="#showAnswer">Answer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col border bg-dark" id="editor">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="showAnswer" tabindex="-1" role="dialog" aria-labelledby="answer"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="answer">Answer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                  dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                  nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+                  sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+                  vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                  Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
+                  elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
+                  eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis,
+                  feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+                  Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                  Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam
+                  semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
+                  luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec
+                  vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
+                  eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales
+                  sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, </p>
+              <ul>
+                  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container position-fixed vh-100 bg-white w-25 px-3 py-3 border-left" id="navbarToggle">
+    <div class="h-100 row flex-column"><!-- bg-light or bg-white -->
+        <nav class="col-auto pb-3 border-bottom navbar navbar-light">
+          <h3 class="h3">Menu</h3>
+          <button class="navbar-toggler" type="button"
+                  data-target="#navbarToggle">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+        <div class="col overflow-auto pt-4">
+            <h4 class="h4">Exercises list</h4>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+                sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+                vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
+                elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
+                eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis,
+                feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+                Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam
+                semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
+                luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec
+                vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
+                eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales
+                sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, </p>
+            <ul>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+                <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="node_modules/split.js/dist/split.min.js"></script>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const elementStyle = (dimension, size, gutterSize) => {
+        $(window).trigger("resize");
+        return {"flex-basis": `calc(${size}% - ${gutterSize}px)`};
+    };
+    const gutterStyle = (_, gutterSize) => ({
+        "flex-basis": `${gutterSize}px`
+    });
+    Split(["#document", "#editor"], {
+        elementStyle,
+        gutterStyle,
+        sizes: [40, 60],
+    });
+    $(".navbar-toggler").on("click", function () {
+        $("#navbarToggle").toggleClass("open");
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "db_editor_page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "html-lint": "htmlhint ./*.html",
+    "bootstrap-lint": "bootlint ./*.html",
+    "lint": "npm run html-lint && npm run bootstrap-lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "split.js": "^1.6.2"
+  },
+  "devDependencies": {
+    "bootlint": "^1.1.0",
+    "htmlhint": "^0.14.2"
+  }
+}

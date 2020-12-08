@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Top Page</title>
+    <style>
+        .page-item:not(.active) > .page-link {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid vh-100">
+    <div class="row flex-nowrap flex-column h-100 bg-light">
+        <header class="col-auto border-bottom bg-white">
+            <nav class="navbar navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="">LMS</a>
+                    <a class="btn btn-outline-primary d-flex" href="" id="login">Login</a>
+                    <div class="align-items-center d-none" id="logout">
+                        <p class="text-muted mb-0 mr-2">username</p>
+                        <a class="btn btn-outline-secondary" href="">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="col container-fluid my-3">
+            <div class="row">
+                <main class="col-12">
+                    <h1 class="h2 mb-3">Exercises</h1>
+                    <table class="table table-bordered table-striped table-hover bg-white">
+                        <thead>
+                        <tr>
+                            <td>No</td>
+                            <td>Title</td>
+                            <td>Progress</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Hello, World!</td>
+                            <td>〇</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Input / Output</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>×</td>
+                        </tr>
+                        <tr>
+                            <td>...</td>
+                            <td>...</td>
+                            <td>×</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $("#login, #logout").on("click", function (event) {
+        event.preventDefault();
+        $("#login, #logout").toggleClass("d-none d-flex");
+    })
+</script>
+</body>
+
+</html>
